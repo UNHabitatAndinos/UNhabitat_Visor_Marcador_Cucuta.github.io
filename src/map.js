@@ -2,6 +2,7 @@
 var map = L.map('map', {
     center: [7.9037, -72.51],
     zoom: 12.5,
+    minZoom: 12.5,
 });
 
 L.easyButton('<img src="images/fullscreen.png">', function (btn, map) {
