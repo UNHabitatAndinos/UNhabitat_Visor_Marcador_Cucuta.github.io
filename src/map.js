@@ -436,18 +436,6 @@ var legends = {
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
     },
-    DENSIDAD: {
-        title: "Densidad residencial",
-        subtitle: "Población x m2", 
-        elem1: '<div><span  style= "color:#1a9641">▉</span>0.000 - 0.007</div>',
-        elem2: '<div><span  style= "color:#a6d96a">▉</span>0.008 - 0.014</div>', 
-        elem3: '<div><span  style= "color:#f4f466">▉</span>0.015 - 0.020</div>',
-        elem4: '<div><span  style= "color:#fdae61">▉</span>0.021 - 0.040</div>',
-        elem5: '<div><span  style= "color:#d7191c">▉</span>0.041 - 0.540</div>',
-        elem6: '',
-        elem7: '',
-        elem8: "DANE Censo Nacional Población y Vivienda 2018",
-    },
     INDICE: {
         title: "Marcador potencial integración urbana",
         subtitle: "%", 
