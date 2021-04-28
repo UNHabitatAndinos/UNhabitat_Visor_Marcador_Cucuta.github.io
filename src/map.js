@@ -35,7 +35,7 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = (props ?
-        '<b> Identificador Manzana ' + props.COD_DANE_A + '</b> <br />' +
+        '<b> Código Manzana ' + props.COD_DANE_A + '</b> <br />' +
         '<b> Comuna ' + props.COMUNA + '</b> <br />' +
         '<b> Viviendas ' + props.VIVI_OCU + '</b> <br />' +
         '<b> Hogares ' + props.HOGARES + '</b> <br />' +
@@ -44,32 +44,45 @@ info.update = function (props) {
 
         '<h4>Vivienda </h4>' +
         '<b> Vivienda adecuada: </b> ' + props.VIV_ADE.toFixed(0) + ' %' + '<br />' +
-        '<b> Hacinamiento: </b> ' + props.HACINAMI.toFixed(0) + ' %' + '<br />' +
+        '<b> Espacio vital suficiente: </b> ' + props.HACINAMI.toFixed(0) + ' %' + '<br />' +
         '<b> Agua mejorada: </b> ' + props.AGUA_MEJOR.toFixed(0) + ' %' + '<br />' +
         '<b> Saneamiento: </b> ' + props.SANEAMIENT.toFixed(0) + ' %' + '<br />' +
         '<b> Electricidad: </b> ' + props.ELECTRICI.toFixed(0) + ' %' + '<br />' +
-        '<b> Internet: </b> ' + props.INTERNET.toFixed(0) + ' %' + '<br />' + '<br />' +
+        '<b> Internet: </b> ' + props.INTERNET.toFixed(0) + ' %' + '<br />' + 
+        '<b> Estrato: </b> ' + props.ESTRATO.toFixed(0)  + '</b> <br />' +  '<br />' +  
 
         '<h4>Salud</h4>' +
         '<b> Proximidad equipamientos de salud: </b> ' + props.DIS_SALUD.toFixed(0) + ' m' + '<br />' +
-        '<b> Concentración de Pm10: </b> ' + props.PM10.toFixed(2) + ' µg/m3' + '</b> <br />' +  '<br />' +  
+        '<b> Concentración de Pm10: </b> ' + props.PM10.toFixed(2) + ' µg/m3' +  '<br />' +   
+        '<b> Contaminación residuos sólidos: </b> ' + props.R_R_SOL.toFixed(2) + ' %' + '<br />' + 
+        '<b> Esperanza de vida al nacer: </b> ' + props.E_VIDA.toFixed(0) + ' años' + '<br />' +
+        '<b> Brecha género esperanza de vida al nacer: </b> ' + props.B_E_VIDA.toFixed(2) + ' años' + '</b> <br />' +  '<br />' +  
         
-        '<h4>Educación, cultura y diversidad </h4>' + '<br />' +
-        '<b> Proximidad equipamientos educativos: </b> ' + props.DIS_EDUCA.toFixed(0) + ' m' + '<br />' +
+        '<h4>Educación, cultura y diversidad </h4>' + 
         '<b> Proximidad equipamientos culturales: </b> ' + props.DIS_BIBLIO.toFixed(0) + ' m' + '<br />' +
+        '<b> Proximidad equipamientos educativos: </b> ' + props.DIS_EDUCA.toFixed(0) + ' m' + '<br />' +
+        '<b> Diversidad ingresos: </b> ' + props.MIX_EST.toFixed(2) + '<br />' +
+        '<b> Diversidad nivel educativo: </b> ' + props.MIX_EDU.toFixed(2) + '<br />' +
+        '<b> Diversidad edades: </b> ' + props.MIX_EDAD.toFixed(2) + '<br />' +
+        '<b> Diversidad etnias y razas: </b> ' + props.MIX_ETNIAS.toFixed(2) + '<br />' +
         '<b> Edad probable de un habitante: </b> ' + props.DES_RANGO + ' años' + '<br />' +
-        '<b> Años promedio educación: </b> ' + props.PRO_A_ESCO.toFixed(0) + ' años' + '<br />' +
-        '<b> Diversidad usos del suelo: </b> ' + props.MIXTICIDAD.toFixed(2) + '<br />' + '<br />' +
-
+        '<b> Brecha género años promedio educación: </b> ' + props.PARIDAD.toFixed(0) + ' años' + '<br />' +
+        '<b> Años promedio educación: </b> ' + props.PRO_A_ESCO.toFixed(0) + ' años'+ '</b> <br />' +  '<br />' +  
+        
         '<h4>Espacios públicos, seguridad y recreación </h4>' +
-        '<b> Proximidad espacio público: </b> ' + props.DIS_EP.toFixed(0) + ' m' + '<br />'  +
+        '<b> Proximidad espacio público: </b> ' + props.DIS_EP.toFixed(0) + ' m' + '<br />' +
+        '<b> M² per capita de espacio público: </b> ' + props.M2_ESP_PU.toFixed(0) + ' m' + '<br />' +
+        '<b> Densidad poblacional: </b> ' + props.DENSIDAD.toFixed(2) + '<br />' +
         '<b> Tasa de hurtos x 100 mil habitantes: </b> ' + props.HURTOS.toFixed(0) + '<br />' +
         '<b> Tasa de homicidios x 100 mil habitantes: </b> ' + props.HOMICIDIOS.toFixed(0) + '<br />' + '<br />' +
-
+        '<b> Diversidad usos del suelo: </b> ' + props.MIXTICIDAD.toFixed(2) + '<br />' + '<br />' +
 
         '<h4>Oportunidades económicas </h4>' +
+        '<b> Proximidad unidades servicios y comerciales: </b> ' + props.D_COM_SER.toFixed(0) + ' m' + '<br />' +
         '<b> Desempleo: </b> ' + props.T_DESEMPL.toFixed(0) + ' %' + '<br />' +
-        '<b> Desempleo juvenil: </b> ' + props.DESEM_JUV.toFixed(0) + ' %' : 'Seleccione una manzana');
+        '<b> Empleo: </b> ' + props.EMPLEO.toFixed(0) + ' %' + '<br />' +
+        '<b> Desempleo juvenil: </b> ' + props.DESEM_JUV.toFixed(0) + ' %' + '<br />' +
+        '<b> Brecha género desempleo: </b> ' + props.BRECHA_D.toFixed(0) + ' %' : 'Seleccione una manzana');
 };
 info.addTo(map);
 
