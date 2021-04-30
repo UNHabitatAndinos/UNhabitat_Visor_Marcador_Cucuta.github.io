@@ -1,13 +1,14 @@
 // Create variable to hold map element, give initial settings to map
 var map = L.map('map', {
-    center: [7.9037, -72.51],
+    center: [7.892, -72.506],
     zoom: 12.5,
-    minZoom: 12.5,
+    minZoom: 13,
 });
 
+
 L.easyButton('<img src="images/fullscreen.png">', function (btn, map) {
-    var cucu = [7.9037, -72.51];
-    map.setView(cucu, 13);
+    var cucu = [7.892, -72.506];
+    map.setView(cucu, 12.5);
 }).addTo(map);
 
 var esriAerialUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services' +
@@ -35,12 +36,12 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = (props ?
-        '<b> Código Manzana ' + props.COD_DANE_A + '</b> <br />' +
-        '<b> Comuna ' + props.COMUNA + '</b> <br />' +
+        '<b> Municipio ' + props.MUN + '</b> <br />' +
+        '<b> Comuna ' + props.COM + '</b> <br />' +
         '<b> Viviendas ' + props.VIVI_OCU + '</b> <br />' +
         '<b> Hogares ' + props.HOGARES + '</b> <br />' +
         '<b> Personas ' + props.PERSONAS + '</b> <br />' +  
-        '<b> Población de origen Venezuela ' + props.VENEZOLANO + '</b> <br />' +  '<br />' +  
+        '<b> Población de origen Venezuela ' + props.VENEZOLANO + '</b> <br />' +  '<br />' + 
 
         '<h4>Vivienda </h4>' +
         '<b> Vivienda adecuada: </b> ' + props.VIV_ADE.toFixed(0) + ' %' + '<br />' +
@@ -102,11 +103,17 @@ var lim = L.geoJson(limiteven, {
     onEachFeature: popupText1,
 }).addTo(map);
 
+
+function getColor(d) {
+    return d > 10 ? '#68e8ff' :
+                      '#ffffff';
+}
+
 function stylec(feature) {
     return {
-        weight: 1,
+        weight: 2,
         opacity: 1,
-        color: 'yellow',
+        color: getColor(feature.properties.Comuna),
         fillOpacity: 0,
         dashArray: '3',
     };
@@ -630,11 +637,11 @@ function setProColor(d) {
 
 function fillColor(feature) {
     return {
-        fillColor: (currentStyle && currentStyle !== 'default' && feature.properties[currentStyle]) ? setProColor(feature.properties[currentStyle]) : '#c3bfc2',
+        fillColor:  setProColor(feature.properties[currentStyle]),
         weight: 0.6,
         opacity: 0.1,
-        color: (currentStyle && currentStyle !== 'default') ? '#ffffff00' : '#c3bfc2', 
-        fillOpacity: (currentStyle && currentStyle !== 'default') ? 0.9 : 0.5,
+        color: (currentStyle) ? '#ffffff00' : '#c3bfc2', 
+        fillOpacity: (currentStyle) ? 0.9 : 0.5,
     };
 }
 
@@ -667,7 +674,7 @@ map.addControl(layersControl);
 changeIndi({value: 'INDICE'});
 
 function popupText(feature, layer) {
-    layer.bindPopup('<strong>Comuna: </strong>' + feature.properties.comuna + '<br />')
+    layer.bindPopup(feature.properties.MUN + '<br />')
 }
 
 function popupText1(feature, layer) {
