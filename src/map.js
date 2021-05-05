@@ -1,8 +1,8 @@
 // Create variable to hold map element, give initial settings to map
 var map = L.map('map', {
     center: [7.892, -72.506],
-    zoom: 12.4,
-    minZoom: 12.4,
+    zoom: 12.5,
+    minZoom: 12.5,
     scrollWheelZoom: false,
 });
 
@@ -10,7 +10,7 @@ map.once('focus', function() { map.scrollWheelZoom.enable(); });
 
 L.easyButton('<img src="images/fullscreen.png">', function (btn, map) {
     var cucu = [7.892, -72.506];
-    map.setView(cucu, 12.4);
+    map.setView(cucu, 12.5);
 }).addTo(map);
 
 var esriAerialUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services' +
@@ -85,7 +85,7 @@ info.update = function (props) {
         'Desempleo: ' + props.T_DESEMPL.toFixed(0) + ' %' + '<br />' +
         'Empleo: ' + props.EMPLEO.toFixed(0) + ' %' + '<br />' +
         'Desempleo juvenil: ' + props.DESEM_JUV.toFixed(0) + ' %' + '<br />' +
-        'Brecha género desempleo: ' + props.BRECHA_D.toFixed(0) + ' %' : 'Seleccione una manzana');
+        'Brecha género desempleo: ' + props.BRECHA_D.toFixed(2) : 'Seleccione una manzana');
 };
 info.addTo(map);
 
