@@ -1,8 +1,8 @@
 // Create variable to hold map element, give initial settings to map
 var map = L.map('map', {
     center: [7.892, -72.506],
-    zoom: 14,
-    minZoom: 14,
+    zoom: 11,
+    minZoom: 13,
     scrollWheelZoom: false,
 });
 
@@ -10,7 +10,7 @@ map.once('focus', function() { map.scrollWheelZoom.enable(); });
 
 L.easyButton('<img src="images/fullscreen.png">', function (btn, map) {
     var cucu = [7.892, -72.506];
-    map.setView(cucu, 14);
+    map.setView(cucu, 11);
 }).addTo(map);
 
 var esriAerialUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services' +
