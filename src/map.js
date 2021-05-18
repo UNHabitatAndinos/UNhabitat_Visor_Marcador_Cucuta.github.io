@@ -1,8 +1,8 @@
 // Create variable to hold map element, give initial settings to map
 var map = L.map('map', {
     center: [7.892, -72.506],
-    zoom: 12.5,
-    minZoom: 13,
+    zoom: 12.4,
+    minZoom: 12.4,
     scrollWheelZoom: false,
 });
 
@@ -10,7 +10,7 @@ map.once('focus', function() { map.scrollWheelZoom.enable(); });
 
 L.easyButton('<img src="images/fullscreen.png">', function (btn, map) {
     var cucu = [7.892, -72.506];
-    map.setView(cucu, 12.5);
+    map.setView(cucu, 12.4);
 }).addTo(map);
 
 var esriAerialUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services' +
@@ -38,54 +38,38 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = (props ?
-        'Municipio ' + props.MUN + '<br />' +
-        'Comuna ' + props.COM + '<br />' +
+        '<b>Municipio ' + props.MUN + '</b> <br />' +
+         props.COM + '<br />' +
         'Viviendas ' + props.VIVI_OCU + '<br />' +
         'Hogares ' + props.HOGARES + '<br />' +
         'Personas ' + props.PERSONAS + '<br />' +  
         'Población de origen Venezuela ' + props.VENEZOLANO + '<br />' +  '<br />' + 
 
-        '<b>Vivienda </b>' + '<br />' +
-        'Vivienda adecuada: ' + props.VIV_ADE.toFixed(0) + ' %' + '<br />' +
-        'Espacio vital suficiente: ' + props.HACINAMI.toFixed(0) + ' %' + '<br />' +
-        'Agua mejorada: </b> ' + props.AGUA_MEJOR.toFixed(0) + ' %' + '<br />' +
-        'Saneamiento: </b> ' + props.SANEAMIENT.toFixed(0) + ' %' + '<br />' +
-        'Electricidad: </b> ' + props.ELECTRICI.toFixed(0) + ' %' + '<br />' +
-        'Internet: </b> ' + props.INTERNET.toFixed(0) + ' %' + '<br />' + 
-        'Estrato: </b> ' + props.ESTRATO.toFixed(0)  + '<br />' +  '<br />' +  
+        '<b>Marcador Inclusión Urbana '  + props.INDICE.toFixed(0)  + ' %' + '</b>'+ '<br />' + '<br />' + 
 
-        '<b>Salud</b>' + '<br />' +
-        'Proximidad equipamientos de salud: ' + props.DIS_SALUD.toFixed(0) + ' m' + '<br />' +
-        'Concentración de Pm10: ' + props.PM10.toFixed(2) + ' µg/m3' +  '<br />' +   
-        'Contaminación residuos sólidos: ' + props.R_R_SOL.toFixed(2) + ' %' + '<br />' + 
-        'Esperanza de vida al nacer: ' + props.E_VIDA.toFixed(0) + ' años' + '<br />' +
-        'Brecha género esperanza de vida al nacer: ' + props.B_E_VIDA.toFixed(2) + ' años' + '<br />' +  '<br />' +  
-        
-        '<b>Educación, cultura y diversidad </b>' + '<br />' +
-        'Proximidad equipamientos culturales: ' + props.DIS_BIBLIO.toFixed(0) + ' m' + '<br />' +
-        'Proximidad equipamientos educativos: ' + props.DIS_EDUCA.toFixed(0) + ' m' + '<br />' +
-        'Diversidad ingresos: ' + props.MIX_EST.toFixed(2) + '/1.79' + '<br />' +
-        'Diversidad nivel educativo: ' + props.MIX_EDU.toFixed(2) + '/2.20' + '<br />' +
-        'Diversidad edades: ' + props.MIX_EDAD.toFixed(2) + '/1.79' + '<br />' +
-        'Diversidad etnias y razas: ' + props.MIX_ETNIAS.toFixed(2) + '/1.61' +'<br />' + 
-        'Edad probable de un habitante: ' + props.DES_RANGO + ' años' + '<br />' +
-        'Brecha género años promedio educación: ' + props.PARIDAD.toFixed(0) + ' años' + '<br />' +
-        'Años promedio educación:' + props.PRO_A_ESCO.toFixed(0) + ' años'+ '<br />' +  '<br />' +  
-        
-        '<b>Espacios públicos, seguridad y recreación </b>' + '<br />' +
-        'Proximidad espacio público: ' + props.DIS_EP.toFixed(0) + ' m' + '<br />' +
-        'M² per capita de espacio público: ' + props.M2_ESP_PU.toFixed(0) + ' m' + '<br />' +
-        'Densidad poblacional: ' + props.DENSIDAD.toFixed(2) + '<br />' +
-        'Tasa de hurtos x 100 mil habitantes: ' + props.HURTOS.toFixed(0) + '<br />' +
-        'Tasa de homicidios x 100 mil habitantes: ' + props.HOMICIDIOS.toFixed(0) + '<br />' +
-        'Diversidad usos del suelo: ' + props.MIXTICIDAD.toFixed(2) + '/1.61' +'<br />' + '<br />' +
+        '<b>Vivienda '  + props.VIV.toFixed(0)  + ' %' + '</b>'+ '<br />' +
+        'Calidad: ' + props.V_CAL.toFixed(0) + ' %' + '<br />' +
+        'Servicios: ' + props.V_SER.toFixed(0) + ' %' + '<br />' +
+        'Asequibilidad: </b> ' + props.V_ASE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
 
-        '<b>Oportunidades económicas </b>' + '<br />' +
-        'Proximidad unidades servicios y comerciales: ' + props.D_COM_SER.toFixed(0) + ' m' + '<br />' +
-        'Desempleo: ' + props.T_DESEMPL.toFixed(0) + ' %' + '<br />' +
-        'Empleo: ' + props.EMPLEO.toFixed(0) + ' %' + '<br />' +
-        'Desempleo juvenil: ' + props.DESEM_JUV.toFixed(0) + ' %' + '<br />' +
-        'Brecha género desempleo: ' + props.BRECHA_D.toFixed(0) + ' %' : 'Seleccione una manzana');
+        '<b>Salud ' + props.SAL.toFixed(0)  + ' %'  + '</b>'+ '<br />' +
+        'Proximidad: ' + props.S_PRO.toFixed(0) + ' %' + '<br />' +
+        'Exposición factores ambientales: ' + props.S_AMB.toFixed(0) + ' %' + '<br />' +
+        'Bienestar: '  + props.S_BIE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
+
+        '<b>Educación, cultura y diversidad ' + props.EDU.toFixed(0)  + ' %'  + '</b>'+  '<br />' +
+        'Proximidad: ' + props.E_PRO.toFixed(0) + ' %' + '<br />' +
+        'Diversidad: ' + props.E_DIV.toFixed(0) + ' %' + '<br />' +
+        'Bienestar: '  + props.E_BIE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
+        
+        '<b>Espacios públicos, seguridad y recreación ' + props.EPUB.toFixed(0)  + ' %'  + '</b>'+ '<br />' +
+        'Proximidad: ' + props.EP_PRO.toFixed(0) + ' %' + '<br />' +
+        'Vitalidad: ' + props.EP_VIT.toFixed(0) + ' %' + '<br />' +
+        'Seguridad y protección: '  + props.EP_SEG.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
+
+        '<b>Oportunidades económicas ' + props.OPO.toFixed(0)  + ' %'  + '</b>'+  '<br />' +
+        'Proximidad: ' + props.O_PRO.toFixed(0) + ' %' + '<br />' +
+        'Bienestar: '  + props.O_BIE.toFixed(0) + ' %'   : 'Seleccione una manzana');
 };
 info.addTo(map);
 
