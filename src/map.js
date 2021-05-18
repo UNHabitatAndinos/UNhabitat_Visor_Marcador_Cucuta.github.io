@@ -38,7 +38,7 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = (props ?
-        '<b>Municipio ' + props.MUN + '</b> <br />' +
+        'Municipio ' + props.MUN + '<br />' +
          props.COM + '<br />' +
         'Viviendas ' + props.VIVI_OCU + '<br />' +
         'Hogares ' + props.HOGARES + '<br />' +
