@@ -47,31 +47,34 @@ info.update = function (props) {
 
         '<b>Marcador Inclusión Urbana '  + props.INDICE.toFixed(0)  + ' %' + '</b>'+ '<br />' + '<br />' + 
 
-        '<b>Vivienda '  + props.VIV.toFixed(0)  + ' %' + '</b>'+ '<br />' +
-        'Calidad: ' + props.V_CAL.toFixed(0) + ' %' + '<br />' +
-        'Servicios: ' + props.V_SER.toFixed(0) + ' %' + '<br />' +
+        '<b>Vivienda asequible, de calidad y con servicios '  + props.VIV.toFixed(0)  + ' %' + '</b>'+ '<br />' +
+        'Calidad estructural y cualitativa de la vivienda: ' + props.V_CAL.toFixed(0) + ' %' + '<br />' +
+        'Acceso a servicios básicos e internet: ' + props.V_SER.toFixed(0) + ' %' + '<br />' +
         'Asequibilidad: </b> ' + props.V_ASE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
 
-        '<b>Salud ' + props.SAL.toFixed(0)  + ' %'  + '</b>'+ '<br />' +
-        'Proximidad: ' + props.S_PRO.toFixed(0) + ' %' + '<br />' +
+        
+        '<b>Salud y bienestar ' + props.SAL.toFixed(0)  + ' %'  + '</b>'+ '<br />' +
+        'Proximidad a centros de salud: ' + props.S_PRO.toFixed(0) + ' %' + '<br />' +
         'Exposición factores ambientales: ' + props.S_AMB.toFixed(0) + ' %' + '<br />' +
-        'Bienestar: '  + props.S_BIE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
+        'Esperanza de vida (considerando brecha de género): '  + props.S_BIE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
 
         '<b>Educación, cultura y diversidad ' + props.EDU.toFixed(0)  + ' %'  + '</b>'+  '<br />' +
-        'Proximidad: ' + props.E_PRO.toFixed(0) + ' %' + '<br />' +
-        'Diversidad: ' + props.E_DIV.toFixed(0) + ' %' + '<br />' +
-        'Bienestar: '  + props.E_BIE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
+        'Proximidad centros educativos: ' + props.E_PRO.toFixed(0) + ' %' + '<br />' +
+        'Diversidad socioeconómica: ' + props.E_DIV.toFixed(0) + ' %' + '<br />' +
+        'Nivel educativo (considerando brecha de género): '  + props.E_BIE.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
         
-        '<b>Espacios públicos, seguridad y recreación ' + props.EPUB.toFixed(0)  + ' %'  + '</b>'+ '<br />' +
-        'Proximidad: ' + props.EP_PRO.toFixed(0) + ' %' + '<br />' +
-        'Vitalidad: ' + props.EP_VIT.toFixed(0) + ' %' + '<br />' +
+        '<b>Espacio público y seguridad ' + props.EPUB.toFixed(0)  + ' %'  + '</b>'+ '<br />' +
+        'Proximidad a espacios públicos: ' + props.EP_PRO.toFixed(0) + ' %' + '<br />' +
+        'Vitalidad ambiente urbano: ' + props.EP_VIT.toFixed(0) + ' %' + '<br />' +
         'Seguridad y protección: '  + props.EP_SEG.toFixed(0)  + ' %' +  '<br />' +  '<br />' +  
 
         '<b>Oportunidades económicas ' + props.OPO.toFixed(0)  + ' %'  + '</b>'+  '<br />' +
-        'Proximidad: ' + props.O_PRO.toFixed(0) + ' %' + '<br />' +
-        'Bienestar: '  + props.O_BIE.toFixed(0) + ' %'   : 'Seleccione una manzana');
+        'Proximidad a comercio y servicios: ' + props.O_PRO.toFixed(0) + ' %' + '<br />' +
+        'Acceso a oportunidades para el bienestar: '  + props.O_BIE.toFixed(0) + ' %'   : 'Seleccione una manzana');
 };
 info.addTo(map);
+
+
 
 function stylel(feature) {
     return {
@@ -182,14 +185,14 @@ var legends = {
     INDICE: {
         title: "Marcador potencial integración urbana",
         subtitle: "%", 
-        elem1: '<div><span  style= "color:#FCF9BB">▉</span>71.13 - 80.85</div>',
-        elem2: '<div><span  style= "color:#FE9D6C">▉</span>66.30 - 71.12</div>', 
-        elem3: '<div><span  style= "color:#CA3E72">▉</span>60.89 - 66.29</div>',
-        elem4: '<div><span  style= "color:#862781">▉</span>53.29 - 60.88</div>',
-        elem5: '<div><span  style= "color:#2A115C">▉</span>35.98 - 53.28</div>',
+        elem1: '<div><span  style= "color:#FCF9BB">▉</span>72 - 81</div>',
+        elem2: '<div><span  style= "color:#FE9D6C">▉</span>66 - 71</div>', 
+        elem3: '<div><span  style= "color:#CA3E72">▉</span>60 - 65</div>',
+        elem4: '<div><span  style= "color:#862781">▉</span>54 - 59</div>',
+        elem5: '<div><span  style= "color:#2A115C">▉</span>35 - 53</div>',
         elem6: '',
         elem7: '',
-        elem8: "DANE Censo Nacional Población y Vivienda 2018",
+        elem8: "DANE Censo Nacional Población y Vivienda 2018 - Alcaldía de Cúcuta",
     },
 }
 
@@ -214,10 +217,10 @@ function setProColor(d) {
                         '#d7191c';
     }
     else if (currentStyle === 'INDICE') {
-        return d > 71.12 ? '#FCF9BB' :
-            d > 66.29 ? '#FE9D6C' :
-                d > 60.88 ? '#CA3E72' :
-                    d > 53.28 ? '#862781' :
+        return d > 71 ? '#FCF9BB' :
+            d > 65 ? '#FE9D6C' :
+                d > 59 ? '#CA3E72' :
+                    d > 53 ? '#862781' :
                     '#2A115C';
     }
     else {
