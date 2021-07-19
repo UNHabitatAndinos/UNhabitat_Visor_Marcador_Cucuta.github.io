@@ -185,11 +185,11 @@ var legends = {
     INDICE: {
         title: "Marcador de Inclusión Urbana",
         subtitle: "%", 
-        elem1: '<div><span  style= "color:#FCF9BB">▉</span>72 - 81</div>',
-        elem2: '<div><span  style= "color:#FE9D6C">▉</span>66 - 71</div>', 
-        elem3: '<div><span  style= "color:#CA3E72">▉</span>60 - 65</div>',
-        elem4: '<div><span  style= "color:#862781">▉</span>54 - 59</div>',
-        elem5: '<div><span  style= "color:#2A115C">▉</span>35 - 53</div>',
+        elem1: '<div><span  style= "color:#FCF9BB">▉</span>71 - 80</div>',
+        elem2: '<div><span  style= "color:#FE9D6C">▉</span>67 - 70</div>', 
+        elem3: '<div><span  style= "color:#CA3E72">▉</span>61 - 66</div>',
+        elem4: '<div><span  style= "color:#862781">▉</span>54 - 60</div>',
+        elem5: '<div><span  style= "color:#2A115C">▉</span>36 - 53</div>',
         elem6: '',
         elem7: '',
         elem8: "ONU Hábitat 2019 - Elaboración propia",
@@ -217,9 +217,9 @@ function setProColor(d) {
                         '#d7191c';
     }
     else if (currentStyle === 'INDICE') {
-        return d > 71 ? '#FCF9BB' :
-            d > 65 ? '#FE9D6C' :
-                d > 59 ? '#CA3E72' :
+        return d > 70 ? '#FCF9BB' :
+            d > 66 ? '#FE9D6C' :
+                d > 60 ? '#CA3E72' :
                     d > 53 ? '#862781' :
                     '#2A115C';
     }
